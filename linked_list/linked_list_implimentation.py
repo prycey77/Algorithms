@@ -31,6 +31,28 @@ class LinkedList():
             self.head = new_node 
             self.length += 1
 
+    def insert(self, index, data):
+        if index >= self.length:
+            if index > self.length:
+                print("That position is unavailable")
+            new_node = Node(data)
+            self.tail.next = new_node
+            self.length += 1
+        elif index == 0:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+        else:
+            new_node = Node(data)
+            current_node = self.head
+            for i in range(index - 1):
+                current_node = current_node.next
+            new_node.next = current_node.next
+            current_node.next = new_node
+            self.length += 1
+
+
     def print_list(self):
         if self.head == None:
             print('Empty')
@@ -47,4 +69,5 @@ my_linkedlist.append(10)
 my_linkedlist.append(5)
 my_linkedlist.append(16)
 my_linkedlist.prepend(1)
+my_linkedlist.insert(3, 40)
 my_linkedlist.print_list()
