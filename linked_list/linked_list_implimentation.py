@@ -20,6 +20,17 @@ class LinkedList():
             self.tail = new_node
             self.length += 1
 
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+            self.length = 1
+        else:
+            new_node.next = self.head
+            self.head = new_node 
+            self.length += 1
+
     def print_list(self):
         if self.head == None:
             print('Empty')
@@ -33,5 +44,7 @@ class LinkedList():
 
 my_linkedlist = LinkedList()
 my_linkedlist.append(10)
-my_linkedlist.append(11)
+my_linkedlist.append(5)
+my_linkedlist.append(16)
+my_linkedlist.prepend(1)
 my_linkedlist.print_list()
